@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; img-src 'self' data:; connect-src http://127.0.0.1:3000;" />
+  <title>DropGenius AI</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ============ SIDEBAR ============ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <defs>
+              <linearGradient id="bmGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#a78bfa"/>
+                <stop offset="55%" stop-color="#7c5cff"/>
+                <stop offset="100%" stop-color="#22d3ee"/>
+              </linearGradient>
+            </defs>
+            <path d="M16 3 L27 10 V22 L16 29 L5 22 V10 Z" fill="url(#bmGrad)" opacity="0.18"/>
+            <path d="M16 3 L27 10 V22 L16 29 L5 22 V10 Z" fill="none" stroke="url(#bmGrad)" stroke-width="1.4"/>
+            <path d="M16 9.5 L22 13 V19 L16 22.5 L10 19 V13 Z" fill="url(#bmGrad)"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">DropGenius</span>
+          <span class="brand-ai">AI</span>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Main navigation">
+        <button class="nav-item is-active" data-section="overview">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+          </span>
+          <span class="nav-label">Overview</span>
+          <span class="nav-tooltip">Overview</span>
+        </button>
+
+        <button class="nav-item" data-section="research">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          </span>
+          <span class="nav-label">Product Research</span>
+          <span class="nav-tooltip">Product Research</span>
+        </button>
+
+        <!-- NEW: Product Finder nav item -->
+        <button class="nav-item" data-section="finder">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m15 9-4 1-1 4 4-1z"/></svg>
+          </span>
+          <span class="nav-label">Product Finder</span>
+          <span class="nav-tooltip">Product Finder</span>
+        </button>
+
+        <button class="nav-item" data-section="products">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21 3 16.5z"/><path d="M3 7.5 12 12l9-4.5"/><path d="M12 12v9"/></svg>
+          </span>
+          <span class="nav-label">My Products</span>
+          <span class="nav-tooltip">My Products</span>
+        </button>
+
+        <button class="nav-item" data-section="calculator">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8"/><path d="M8 11h2M12 11h2M16 11h0"/><path d="M8 15h2M12 15h2M16 15h0"/><path d="M8 19h2M12 19h2M16 19h0"/></svg>
+          </span>
+          <span class="nav-label">Profit Calculator</span>
+          <span class="nav-tooltip">Profit Calculator</span>
+        </button>
+
+        <button class="nav-item" data-section="priceadvisor">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg>
+          </span>
+          <span class="nav-label">Price Advisor</span>
+          <span class="nav-tooltip">Price Advisor</span>
+        </button>
+
+        <button class="nav-item" data-section="studio">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M18.5 15.5l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></svg>
+          </span>
+          <span class="nav-label">AI Product Studio</span>
+          <span class="nav-tooltip">AI Product Studio</span>
+        </button>
+
+        <button class="nav-item" data-section="marketing">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h1l3 5v-5h4l6 4V5l-6 4H6a2 2 0 0 0-2 2z"/></svg>
+          </span>
+          <span class="nav-label">Marketing Ideas</span>
+          <span class="nav-tooltip">Marketing Ideas</span>
+        </button>
+
+        <button class="nav-item" data-section="about">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>
+          </span>
+          <span class="nav-label">About</span>
+          <span class="nav-tooltip">About</span>
+        </button>
+
+        <button class="nav-item" data-section="help">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8v.5"/><path d="M12 17h.01"/></svg>
+          </span>
+          <span class="nav-label">Help</span>
+          <span class="nav-tooltip">Help</span>
+        </button>
+
+        <button class="nav-item" data-section="settings">
+          <span class="nav-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+          </span>
+          <span class="nav-label">Settings</span>
+          <span class="nav-tooltip">Settings</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="collapse-btn" id="collapseBtn" title="Collapse sidebar" aria-label="Collapse sidebar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ============ MAIN ============ -->
+    <div class="main">
+
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn mobile-only" id="mobileMenuBtn" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
+          <div class="crumb-wrap">
+            <div class="breadcrumb"><span>Home</span><span class="sep">/</span><span id="crumbCurrent">Overview</span></div>
+            <h1 class="page-title" id="pageTitle">Overview</h1>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="search" id="globalSearchWrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="text" id="globalSearch" placeholder="Search products, ideas…" autocomplete="off" />
+            <kbd class="search-kbd">Ctrl K</kbd>
+          </div>
+
+          <div class="notif-wrap">
+            <button class="icon-btn" id="notifBtn" aria-label="Notifications" aria-haspopup="true" aria-expanded="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></svg>
+              <span class="badge" id="notifBadge" hidden>0</span>
+            </button>
+
+            <div class="notif-panel" id="notifPanel" hidden>
+              <div class="notif-head">
+                <span>Notifications</span>
+                <button class="link-btn" id="clearNotifs">Clear all</button>
+              </div>
+              <div class="notif-body" id="notifBody">
+                <div class="notif-empty">You're all caught up.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile">
+            <div class="avatar">DG</div>
+          </div>
+        </div>
+      </header>
+
+      <main class="content" id="content">
+
+        <!-- ===================== OVERVIEW ===================== -->
+        <section class="section is-active" id="section-overview" aria-labelledby="pageTitle">
+          <div class="hero">
+            <div class="hero-glow"></div>
+            <div class="hero-inner">
+              <span class="hero-eyebrow">Welcome back</span>
+              <h2 class="hero-title">Turn Product Ideas Into<br/>Profitable Businesses.</h2>
+              <p class="hero-sub">Research, evaluate, and calculate the potential of your next dropshipping product — all in one calm, focused workspace.</p>
+              <div class="hero-actions">
+                <button class="btn btn-primary" data-goto="research">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                  Discover Products
+                </button>
+                <button class="btn btn-ghost" data-goto="calculator">Open Profit Calculator</button>
+                <button class="btn btn-ghost" data-goto="priceadvisor">Try Price Advisor</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon violet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7.5 12 3l9 4.5v9L12 21 3 16.5z"/><path d="M3 7.5 12 12l9-4.5"/><path d="M12 12v9"/></svg>
+              </div>
+              <div class="stat-meta">
+                <div class="stat-value" id="statTracked">0</div>
+                <div class="stat-label">Products Tracked</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12l1 6H5z"/><path d="M5 9v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V9"/><path d="M9 13h6"/></svg>
+              </div>
+              <div class="stat-meta">
+                <div class="stat-value" id="statSaved">0</div>
+                <div class="stat-label">Products Saved</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h5"/></svg>
+              </div>
+              <div class="stat-meta">
+                <div class="stat-value" id="statResearch">0</div>
+                <div class="stat-label">Research Reports</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon green">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+              </div>
+              <div class="stat-meta">
+                <div class="stat-value" id="statProfit">$0.00</div>
+                <div class="stat-label">Estimated Potential Profit</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-head">
+            <h3>Quick Actions</h3>
+          </div>
+
+          <div class="quick-grid">
+            <button class="quick-card" data-goto="research">
+              <div class="quick-icon violet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              </div>
+              <h4>Research a Product</h4>
+              <p>Score an idea before you spend a cent.</p>
+              <span class="quick-cta">Start research →</span>
+            </button>
+
+            <button class="quick-card" data-goto="calculator">
+              <div class="quick-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8"/><path d="M8 11h2M12 11h2"/><path d="M8 15h2M12 15h2"/></svg>
+              </div>
+              <h4>Calculate Profit</h4>
+              <p>Break down costs, margin and break-even.</p>
+              <span class="quick-cta">Open calculator →</span>
+            </button>
+
+            <button class="quick-card" data-goto="priceadvisor">
+              <div class="quick-icon amber">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V4h9z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg>
+              </div>
+              <h4>Price Advisor</h4>
+              <p>Evaluate a price against your target.</p>
+              <span class="quick-cta">Open advisor →</span>
+            </button>
+
+            <button class="quick-card" data-goto="studio">
+              <div class="quick-icon cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/><path d="M18.5 15.5l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z"/></svg>
+              </div>
+              <h4>Create a Product Listing</h4>
+              <p>Draft titles, descriptions and selling points.</p>
+              <span class="quick-cta">Open studio →</span>
+            </button>
+          </div>
+
+          <div class="section-head">
+            <h3>Recent Products</h3>
+            <button class="btn btn-ghost btn-sm" data-goto="products">View all</button>
+          </div>
+          <div class="recent-list" id="recentProducts"></div>
+
+          <div class="section-head">
+            <h3>Need help?</h3>
+            <button class="btn btn-ghost btn-sm" data-goto="help">Open Help Center</button>
+          </div>
+          <div class="recent-list">
+            <button class="quick-card" data-goto="about" style="grid-column:span 1;">
+              <div class="quick-icon violet">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>
+              </div>
+              <h4>About DropGenius AI</h4>
+              <p>What this app does and how it works.</p>
+              <span class="quick-cta">Read more →</span>
+            </button>
+            <button class="quick-card" data-goto="help" style="grid-column:span 1;">
+              <div class="quick-icon blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1 1-1.1 1.8v.5"/><path d="M12 17h.01"/></svg>
+              </div>
+              <h4>Help Center</h4>
+              <p>Step-by-step guidance and troubleshooting.</p>
+              <span class="quick-cta">Get help →</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- ===================== RESEARCH ===================== -->
+        <section class="section" id="section-research">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">Product Research</h2>
+                <p class="panel-sub">Evaluate an idea against cost, price, audience, and problem solved. All estimates stay local to your device.</p>
+              </div>
+            </div>
+
+            <form class="form-grid" id="researchForm" novalidate>
+              <div class="field">
+                <label for="rName">Product name or keyword <span class="req">*</span></label>
+                <input id="rName" name="rName" type="text" placeholder="e.g. Portable blender" />
+                <span class="field-error" data-for="rName"></span>
+              </div>
+
+              <div class="field">
+                <label for="rCategory">Category</label>
+                <select id="rCategory" name="rCategory">
+                  <option value="">Select category</option>
+                  <option>Home & Kitchen</option>
+                  <option>Beauty & Personal Care</option>
+                  <option>Fitness & Outdoors</option>
+                  <option>Pet Supplies</option>
+                  <option>Tech & Gadgets</option>
+                  <option>Fashion & Accessories</option>
+                  <option>Baby & Kids</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="rCost">Estimated cost per unit</label>
+                <input id="rCost" name="rCost" type="number" min="0" step="0.01" placeholder="0.00" />
+              </div>
+
+              <div class="field">
+                <label for="rPrice">Estimated selling price</label>
+                <input id="rPrice" name="rPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+              </div>
+
+              <div class="field span-2">
+                <label for="rAudience">Target audience</label>
+                <input id="rAudience" name="rAudience" type="text" placeholder="e.g. Busy professionals aged 25–40" />
+              </div>
+
+              <div class="field span-2">
+                <label for="rProblem">Problem solved</label>
+                <input id="rProblem" name="rProblem" type="text" placeholder="e.g. Makes healthy smoothies possible on the go" />
+              </div>
+
+              <div class="field span-2">
+                <label for="rNotes">Notes / evaluation</label>
+                <textarea id="rNotes" name="rNotes" rows="3" placeholder="Supplier thoughts, competition, risks, verdict…"></textarea>
+              </div>
+
+              <div class="form-actions span-2">
+                <button type="reset" class="btn btn-ghost">Reset</button>
+                <button type="submit" class="btn btn-primary">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                  Save Research
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div class="section-head">
+            <h3>Saved Research</h3>
+            <span class="muted" id="researchCount">0 reports</span>
+          </div>
+          <div class="research-list" id="researchList"></div>
+        </section>
+
+        <!-- ===================== PRODUCT FINDER (NEW) ===================== -->
+        <section class="section" id="section-finder">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">Product Finder</h2>
+                <p class="panel-sub">
+                  Browse a small set of <strong>demo products</strong> to explore the finder.
+                  All figures are <strong>sample data</strong> for demonstration only — not live market research, supplier quotes or verified sales data.
+                  A real product research API can be connected later to replace the demo list.
+                </p>
+              </div>
+            </div>
+
+            <div class="finder-controls">
+              <div class="search search-inline finder-search">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input type="text" id="finderSearch" placeholder="Search name or category…" autocomplete="off" />
+              </div>
+              <select id="finderCategory" class="select-inline" aria-label="Filter by category">
+                <option value="all">All categories</option>
+                <option>Home & Kitchen</option>
+                <option>Beauty & Personal Care</option>
+                <option>Fitness & Outdoors</option>
+                <option>Pet Supplies</option>
+                <option>Tech & Gadgets</option>
+                <option>Fashion & Accessories</option>
+                <option>Baby & Kids</option>
+                <option>Other</option>
+              </select>
+              <input id="finderMaxCost" class="select-inline finder-num" type="number" min="0" step="0.01" placeholder="Max cost" aria-label="Maximum product cost" />
+              <input id="finderMinMargin" class="select-inline finder-num" type="number" min="0" step="0.5" placeholder="Min margin %" aria-label="Minimum profit margin percentage" />
+              <select id="finderSort" class="select-inline" aria-label="Sort products">
+                <option value="name-asc">Sort: Name (A–Z)</option>
+                <option value="name-desc">Sort: Name (Z–A)</option>
+                <option value="price-asc">Sort: Price (low → high)</option>
+                <option value="price-desc">Sort: Price (high → low)</option>
+                <option value="profit-desc">Sort: Profit (high → low)</option>
+                <option value="margin-desc">Sort: Margin (high → low)</option>
+              </select>
+              <label class="finder-toggle">
+                <input type="checkbox" id="finderFavOnly" />
+                <span>Favorites only</span>
+              </label>
+              <button class="btn btn-ghost btn-sm" id="finderResetBtn" type="button">Reset filters</button>
+            </div>
+
+            <div class="finder-count-row">
+              <span class="muted" id="finderCount">0 products</span>
+              <span class="muted">Demo data — estimates only</span>
+            </div>
+          </div>
+
+          <div class="finder-grid" id="finderGrid"></div>
+
+          <div class="empty" id="finderEmpty" hidden>
+            <div class="empty-art">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="28" cy="28" r="18"/>
+                <path d="m52 52-13-13"/>
+              </svg>
+            </div>
+            <h4>No products match your filters</h4>
+            <p>Try clearing the search, category, price or margin filter.</p>
+            <button class="btn btn-ghost" id="finderEmptyResetBtn" type="button">Reset filters</button>
+          </div>
+        </section>
+
+        <!-- ===================== PRODUCTS ===================== -->
+        <section class="section" id="section-products">
+          <div class="toolbar">
+            <div class="toolbar-left">
+              <div class="search search-inline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+                <input type="text" id="productSearch" placeholder="Search products…" />
+              </div>
+              <select id="filterStatus" class="select-inline" aria-label="Filter by status">
+                <option value="all">All statuses</option>
+                <option value="idea">Idea</option>
+                <option value="researching">Researching</option>
+                <option value="active">Active</option>
+                <option value="paused">Paused</option>
+              </select>
+              <select id="filterCategory" class="select-inline" aria-label="Filter by category">
+                <option value="all">All categories</option>
+                <option>Home & Kitchen</option>
+                <option>Beauty & Personal Care</option>
+                <option>Fitness & Outdoors</option>
+                <option>Pet Supplies</option>
+                <option>Tech & Gadgets</option>
+                <option>Fashion & Accessories</option>
+                <option>Baby & Kids</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="toolbar-right">
+              <button class="btn btn-primary" id="addProductBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                Add Product
+              </button>
+            </div>
+          </div>
+
+          <div class="panel table-panel">
+            <div class="table-wrap">
+              <table class="data-table" id="productsTable">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th class="num">Cost</th>
+                    <th class="num">Price</th>
+                    <th class="num">Profit</th>
+                    <th class="num">Margin</th>
+                    <th>Status</th>
+                    <th class="right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="productsBody"></tbody>
+              </table>
+            </div>
+            <div class="empty" id="productsEmpty" hidden>
+              <div class="empty-art">
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 22 32 10l22 12v20L32 54 10 42z"/>
+                  <path d="M10 22 32 34l22-12"/>
+                  <path d="M32 34v20"/>
+                </svg>
+              </div>
+              <h4>No products yet</h4>
+              <p>Add your first product to start tracking potential profit.</p>
+              <button class="btn btn-primary" id="emptyAddBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+                Add your first product
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== CALCULATOR ===================== -->
+        <section class="section" id="section-calculator">
+          <div class="calc-grid">
+            <div class="panel">
+              <div class="panel-head">
+                <div>
+                  <h2 class="panel-title">Profit Calculator</h2>
+                  <p class="panel-sub">Enter your per-sale costs and selling price. Results update automatically.</p>
+                </div>
+              </div>
+
+              <div class="form-grid">
+
+                <div class="field">
+                  <label for="cCurrency">Currency</label>
+                  <select id="cCurrency">
+                    <option value="USD" selected>USD — $</option>
+                    <option value="INR">INR — ₹</option>
+                    <option value="EUR">EUR — €</option>
+                    <option value="GBP">GBP — £</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="cPrice">Selling price <span class="req">*</span></label>
+                  <input id="cPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="cCost">Product cost</label>
+                  <input id="cCost" type="number" min="0" step="0.01" placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="cShip">Shipping cost</label>
+                  <input id="cShip" type="number" min="0" step="0.01" placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="cPack">Packaging cost</label>
+                  <input id="cPack" type="number" min="0" step="0.01" placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="cAds">Ad cost per sale</label>
+                  <input id="cAds" type="number" min="0" step="0.01" placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="cOther">Other expenses</label>
+                  <input id="cOther" type="number" min="0" step="0.01" placeholder="0.00" />
+                </div>
+                <div class="field">
+                  <label for="cFeeRate">Payment processing fee (%)</label>
+                  <input id="cFeeRate" type="number" min="0" max="99.99" step="0.01" placeholder="e.g. 2.9" />
+                </div>
+                <div class="field">
+                  <label for="cTargetMargin">Target Profit Margin (%)</label>
+                  <input id="cTargetMargin" type="number" min="0" max="99.99" step="0.5" value="30" placeholder="e.g. 30" />
+                </div>
+              </div>
+
+              <p class="hint">All values are estimates. Taxes and refunds are not included. The payment processing fee is calculated from the percentage you enter.</p>
+            </div>
+
+            <div class="panel results-panel">
+              <h3 class="panel-title">Results</h3>
+              <div class="result-list">
+                <div class="result-item">
+                  <span>Total cost per sale</span>
+                  <strong id="resTotal">$0.00</strong>
+                </div>
+                <div class="result-item">
+                  <span>Payment processing fee</span>
+                  <strong id="resFee">$0.00</strong>
+                </div>
+                <div class="result-item">
+                  <span>Estimated profit per sale</span>
+                  <strong id="resProfit" class="accent-green">$0.00</strong>
+                </div>
+                <div class="result-item">
+                  <span>Profit margin</span>
+                  <strong id="resMargin">0.00%</strong>
+                </div>
+                <div class="result-item">
+                  <span>Break-even selling price</span>
+                  <strong id="resBreak">$0.00</strong>
+                </div>
+                <div class="result-item">
+                  <span>Recommended Selling Price</span>
+                  <strong id="resSuggestedPrice">$0.00</strong>
+                </div>
+              </div>
+              <div class="meter">
+                <div class="meter-fill" id="marginMeter" style="width:0%"></div>
+              </div>
+              <p class="hint" id="calcHint">Enter values to see your estimate.</p>
+              <p class="hint" id="suggestedHint">The recommended price is an estimate based on the entered costs, payment fee and target margin.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== PRICE ADVISOR ===================== -->
+        <section class="section" id="section-priceadvisor">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">Price Advisor</h2>
+                <p class="panel-sub">
+                  Evaluate a product price against your target and any historical context you supply.
+                  Automatic retrieval requires a supported store integration — none are connected in this build,
+                  so please enter prices manually. Recommendations are <strong>estimates, not guarantees</strong>.
+                </p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field span-2">
+                <label for="paUrl">Product URL (optional)</label>
+                <input id="paUrl" type="url" placeholder="Paste a shopping link (e.g. https://www.amazon.in/…)" />
+                <span class="field-hint" id="paPlatformHint">Paste a supported link to auto-detect the platform.</span>
+              </div>
+
+              <div class="field">
+                <label for="paName">Product name <span class="req">*</span></label>
+                <input id="paName" type="text" placeholder="e.g. Wireless earbuds" />
+                <span class="field-error" data-for="paName"></span>
+              </div>
+
+              <div class="field">
+                <label for="paCurrency">Currency</label>
+                <select id="paCurrency">
+                  <option value="USD">USD — $</option>
+                  <option value="INR">INR — ₹</option>
+                  <option value="EUR">EUR — €</option>
+                  <option value="GBP">GBP — £</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="paCurrent">Current price <span class="req">*</span></label>
+                <input id="paCurrent" type="number" min="0" step="0.01" placeholder="0.00" />
+                <span class="field-error" data-for="paCurrent"></span>
+              </div>
+
+              <div class="field">
+                <label for="paTarget">Target price <span class="req">*</span></label>
+                <input id="paTarget" type="number" min="0" step="0.01" placeholder="0.00" />
+                <span class="field-error" data-for="paTarget"></span>
+              </div>
+
+              <div class="field">
+                <label for="paAvg">Historical average (optional)</label>
+                <input id="paAvg" type="number" min="0" step="0.01" placeholder="Only if you have reliable data" />
+              </div>
+
+              <div class="field">
+                <label for="paLow">Historical low (optional)</label>
+                <input id="paLow" type="number" min="0" step="0.01" placeholder="Only if you have reliable data" />
+              </div>
+
+              <div class="field">
+                <label for="paDate">Intended purchase date (optional)</label>
+                <input id="paDate" type="date" />
+              </div>
+
+              <div class="form-actions span-2">
+                <button type="button" class="btn btn-ghost" id="paClearBtn">Clear form</button>
+                <button type="button" class="btn btn-primary" id="paAnalyzeBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+                  Analyze Price
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pa-result" id="paResult" hidden></div>
+
+          <div class="section-head">
+            <h3>Saved Analyses</h3>
+            <span class="muted" id="paSavedCount">0 analyses</span>
+          </div>
+          <div class="pa-saved-list" id="paSavedList"></div>
+
+          <div class="section-head">
+            <h3>Store Integrations</h3>
+            <p class="muted">Connect a supported data source to unlock automatic price retrieval. No integrations are connected in this build.</p>
+          </div>
+          <div class="integration-grid" id="integrationGrid"></div>
+        </section>
+
+        <!-- ===================== STUDIO ===================== -->
+        <section class="section" id="section-studio">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">AI Product Studio</h2>
+                <p class="panel-sub">Generate listing copy locally from templates. This is a <strong>basic local generator</strong>, not a live AI model. Connect a real API later if you wish.</p>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="field">
+                <label for="sName">Product name <span class="req">*</span></label>
+                <input id="sName" type="text" placeholder="e.g. Portable blender" />
+                <span class="field-error" data-for="sName"></span>
+              </div>
+              <div class="field">
+                <label for="sCategory">Category</label>
+                <select id="sCategory">
+                  <option>Home & Kitchen</option>
+                  <option>Beauty & Personal Care</option>
+                  <option>Fitness & Outdoors</option>
+                  <option>Pet Supplies</option>
+                  <option>Tech & Gadgets</option>
+                  <option>Fashion & Accessories</option>
+                  <option>Baby & Kids</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="sAudience">Target audience</label>
+                <input id="sAudience" type="text" placeholder="e.g. Busy professionals" />
+              </div>
+              <div class="field">
+                <label for="sTone">Tone</label>
+                <select id="sTone">
+                  <option>Confident</option>
+                  <option>Friendly</option>
+                  <option>Luxury</option>
+                  <option>Playful</option>
+                  <option>Minimal</option>
+                </select>
+              </div>
+              <div class="field span-2">
+                <label for="sBenefit">Main benefit</label>
+                <input id="sBenefit" type="text" placeholder="e.g. Saves 15 minutes every morning" />
+              </div>
+              <div class="form-actions span-2">
+                <button class="btn btn-primary" id="generateStudioBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.6L18.5 9l-4.7 1.4L12 15l-1.8-4.6L5.5 9l4.7-1.4z"/></svg>
+                  Generate
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="studio-output" id="studioOutput" hidden>
+            <div class="output-grid">
+              <div class="output-card">
+                <div class="output-head"><span>Product Title</span><button class="copy-btn" data-copy="outTitle">Copy</button></div>
+                <p class="output-body" id="outTitle"></p>
+              </div>
+              <div class="output-card">
+                <div class="output-head"><span>Marketing Headline</span><button class="copy-btn" data-copy="outHeadline">Copy</button></div>
+                <p class="output-body" id="outHeadline"></p>
+              </div>
+              <div class="output-card span-2">
+                <div class="output-head"><span>Product Description</span><button class="copy-btn" data-copy="outDescription">Copy</button></div>
+                <p class="output-body" id="outDescription"></p>
+              </div>
+              <div class="output-card span-2">
+                <div class="output-head"><span>Ad Copy</span><button class="copy-btn" data-copy="outAd">Copy</button></div>
+                <p class="output-body" id="outAd"></p>
+              </div>
+              <div class="output-card span-2">
+                <div class="output-head"><span>Selling Points</span><button class="copy-btn" data-copy="outPoints">Copy</button></div>
+                <ul class="output-points" id="outPoints"></ul>
+              </div>
+            </div>
+            <p class="hint">Generated locally from templates. Review before publishing.</p>
+          </div>
+        </section>
+
+        <!-- ===================== MARKETING ===================== -->
+        <section class="section" id="section-marketing">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">Marketing Ideas</h2>
+                <p class="panel-sub">Generate campaign angles, hooks and audience targeting ideas locally.</p>
+              </div>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label for="mProduct">Product <span class="req">*</span></label>
+                <input id="mProduct" type="text" placeholder="e.g. Portable blender" />
+                <span class="field-error" data-for="mProduct"></span>
+              </div>
+              <div class="field">
+                <label for="mAudience">Audience</label>
+                <input id="mAudience" type="text" placeholder="e.g. Fitness enthusiasts" />
+              </div>
+              <div class="field">
+                <label for="mChannel">Primary channel</label>
+                <select id="mChannel">
+                  <option>TikTok</option>
+                  <option>Instagram Reels</option>
+                  <option>Facebook Ads</option>
+                  <option>YouTube Shorts</option>
+                  <option>Email</option>
+                  <option>Pinterest</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="mGoal">Goal</label>
+                <select id="mGoal">
+                  <option>Awareness</option>
+                  <option>First sale</option>
+                  <option>Repeat purchase</option>
+                  <option>Retargeting</option>
+                </select>
+              </div>
+              <div class="form-actions span-2">
+                <button class="btn btn-primary" id="generateMarketingBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h1l3 5v-5h4l6 4V5l-6 4H6a2 2 0 0 0-2 2z"/></svg>
+                  Generate Ideas
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="idea-grid" id="ideaGrid"></div>
+        </section>
+
+        <!-- ===================== ABOUT ===================== -->
+        <section class="section" id="section-about">
+          <div class="panel about-hero">
+            <span class="hero-eyebrow">About</span>
+            <h2 class="about-title">DROPGENIUS AI</h2>
+            <p class="about-tagline">Smarter Sourcing. Clearer Decisions.</p>
+            <p class="about-lead">
+              DropGenius AI is a local-first desktop workspace for organising product research,
+              estimating profitability, drafting listings and evaluating prices when reliable
+              data is available. Everything is stored on your own device.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-card">
+              <h3>What the app does</h3>
+              <ul class="about-list">
+                <li>Organises your product research in one place.</li>
+                <li>Calculates estimated profit and margin from the values you enter.</li>
+                <li>Helps you draft product listings and marketing ideas from local templates.</li>
+                <li>Evaluates a product price against your target — with honest confidence levels.</li>
+                <li>Stores everything locally on your device, with no accounts and no tracking.</li>
+              </ul>
+            </div>
+
+            <div class="about-card">
+              <h3>How it works</h3>
+              <ol class="about-list">
+                <li>Research a product idea and save your notes.</li>
+                <li>Estimate costs, price and margin in the Profit Calculator.</li>
+                <li>Track products, statuses and estimated profit.</li>
+                <li>Draft listings and marketing ideas from local templates.</li>
+                <li>Evaluate prices with the Price Advisor when data is available.</li>
+              </ol>
+            </div>
+
+            <div class="about-card about-card-warn span-2">
+              <h3>Limitations — please read</h3>
+              <p>
+                All profit calculations and price recommendations are <strong>estimates only</strong>.
+                DropGenius AI does not fetch live market data, sales figures, competition metrics,
+                supplier quotes or real-time pricing. Every figure depends entirely on the values you enter.
+              </p>
+              <p>
+                Estimates do not include taxes, refunds, currency fluctuations, shipping delays or
+                returns. Payment processing fees can be estimated using the optional fee percentage
+                field in the Profit Calculator, but any fixed per-transaction fees charged by your
+                processor are not included. Historical prices do not guarantee future prices. Nothing
+                in this application constitutes financial, legal or investment advice. Always verify
+                pricing and product information with the original source before making a purchase decision.
+              </p>
+            </div>
+
+            <div class="about-card span-2">
+              <h3>Creator</h3>
+              <p>Created by <strong>Karan Kousik</strong>.</p>
+              <p class="muted">No company affiliation, business results or professional qualifications are claimed.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===================== HELP ===================== -->
+        <section class="section" id="section-help">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">Help Center</h2>
+                <p class="panel-sub">Beginner-friendly guidance for every part of DropGenius AI. Click any topic to expand it, or search below.</p>
+              </div>
+            </div>
+            <div class="search search-inline" style="width:100%; max-width:420px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input type="text" id="helpSearch" placeholder="Search help topics…" />
+            </div>
+          </div>
+
+          <div class="help-list" id="helpList"></div>
+
+          <div class="help-empty" id="helpEmpty" hidden>
+            <p>No help topics match your search.</p>
+          </div>
+        </section>
+
+        <!-- ===================== SETTINGS ===================== -->
+        <section class="section" id="section-settings">
+          <div class="panel">
+            <div class="panel-head">
+              <div>
+                <h2 class="panel-title">Settings</h2>
+                <p class="panel-sub">Preferences and data management. Everything is stored locally on this device.</p>
+              </div>
+            </div>
+
+            <div class="setting-row">
+              <div>
+                <div class="setting-title">Reduce motion</div>
+                <div class="setting-sub">Minimize animations across the interface.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="settingReduceMotion" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-row">
+              <div>
+                <div class="setting-title">Compact sidebar</div>
+                <div class="setting-sub">Collapse the sidebar to icons only.</div>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="settingCompact" />
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-row danger">
+              <div>
+                <div class="setting-title">Reset all data</div>
+                <div class="setting-sub">Delete all products, research reports, saved price analyses and notifications from this device.</div>
+              </div>
+              <button class="btn btn-danger" id="resetDataBtn">Reset</button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ============ PRODUCT MODAL ============ -->
+  <div class="modal-backdrop" id="productModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+      <div class="modal-head">
+        <h3 id="productModalTitle">Add Product</h3>
+        <button class="icon-btn" data-close-modal aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <form id="productForm" class="modal-body" novalidate>
+        <input type="hidden" id="pId" />
+        <div class="form-grid">
+          <div class="field span-2">
+            <label for="pName">Product name <span class="req">*</span></label>
+            <input id="pName" type="text" placeholder="e.g. Portable blender" />
+            <span class="field-error" data-for="pName"></span>
+          </div>
+          <div class="field">
+            <label for="pCategory">Category</label>
+            <select id="pCategory">
+              <option>Home & Kitchen</option>
+              <option>Beauty & Personal Care</option>
+              <option>Fitness & Outdoors</option>
+              <option>Pet Supplies</option>
+              <option>Tech & Gadgets</option>
+              <option>Fashion & Accessories</option>
+              <option>Baby & Kids</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pStatus">Status</label>
+            <select id="pStatus">
+              <option value="idea">Idea</option>
+              <option value="researching">Researching</option>
+              <option value="active">Active</option>
+              <option value="paused">Paused</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="pCost">Supplier cost <span class="req">*</span></label>
+            <input id="pCost" type="number" min="0" step="0.01" placeholder="0.00" />
+            <span class="field-error" data-for="pCost"></span>
+          </div>
+          <div class="field">
+            <label for="pPrice">Selling price <span class="req">*</span></label>
+            <input id="pPrice" type="number" min="0" step="0.01" placeholder="0.00" />
+            <span class="field-error" data-for="pPrice"></span>
+          </div>
+          <div class="field span-2">
+            <label for="pNotes">Notes</label>
+            <textarea id="pNotes" rows="2" placeholder="Optional notes…"></textarea>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+          <button type="submit" class="btn btn-primary" id="productSubmitBtn">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ FINDER DETAIL MODAL (NEW) ============ -->
+  <div class="modal-backdrop" id="finderDetailModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="finderDetailTitle">
+      <div class="modal-head">
+        <h3 id="finderDetailTitle">Product Details</h3>
+        <button class="icon-btn" data-close-modal aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="finderDetailBody"></div>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" data-close-modal>Close</button>
+          <button type="button" class="btn btn-primary" id="finderDetailFavBtn">Add to favorites</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CONFIRM MODAL ============ -->
+  <div class="modal-backdrop" id="confirmModal" hidden>
+    <div class="modal modal-sm" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <h3 id="confirmTitle">Confirm</h3>
+        <button class="icon-btn" data-close-modal aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p id="confirmMessage" class="confirm-msg"></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" data-close-modal>Cancel</button>
+          <button type="button" class="btn btn-danger" id="confirmOk">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TOASTS ============ -->
+  <div class="toast-wrap" id="toastWrap" aria-live="polite"></div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

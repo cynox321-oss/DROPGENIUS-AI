@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "dropgenius-ai-worker",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-06",
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  "ai": {
+    "binding": "AI"
+  },
+  "ratelimits": [
+    {
+      "name": "RATE_LIMITER",
+      "namespace_id": "8247163905",
+      "simple": {
+        "limit": 10,
+        "period": 60
+      }
+    }
+  ]
+}
